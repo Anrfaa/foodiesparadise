@@ -1,88 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Foodie's Paradise</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: lightgray;
         }
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
+            font-weight: bold;
             text-align: center;
         }
         nav {
-            background-color: #444;
+            background-color: grey;
             overflow: hidden;
         }
         nav a {
             float: left;
             display: block;
-            color: #fff;
+            color: white;
             text-align: center;
             padding: 14px 16px;
-            text-decoration: none;
+            text-decoration: underline;
         }
         nav a:hover {
-            background-color: #ddd;
+            background-color: white;
             color: black;
         }
+        nav a.active {
+            background-color: grey;
+            color: white;
+        }
         main {
-            padding: 20px;
             display: flex;
             justify-content: space-around;
         }
         .card {
-            background-color: #fff;
-            border: 1px solid #ddd;
+            border: 1px solid white;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            width: 30%;
-            padding: 20px;
             text-align: center;
         }
         .card img {
             max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .card h2 {
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-        .card p {
-            color: #666;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
         }
         .sidebar {
-            width: 25%;
             padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: white;
             height: 100vh; /* Make sidebar height full */
             position: fixed; /* Fix sidebar position */
             right: 0; /* Align sidebar to the right */
             top: 0; /* Align sidebar to the top */
-        }
-        .sidebar h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
         }
         .sidebar form {
             display: flex;
@@ -91,30 +61,46 @@
         .sidebar input[type="text"] {
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
         }
         .sidebar input[type="submit"] {
             padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
+            background-color: darkgray;
+            color: white;
             cursor: pointer;
         }
         .sidebar input[type="submit"]:hover {
-            background-color: #444;
+            background-color: grey;
         }
         .content {
-            display: flex;
-            justify-content: space-between;
             margin-right: 25%; /* Adjust content margin to accommodate sidebar */
         }
+        footer {
+            background-color: grey;
+            color: white;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
     </style>
+    <script>
+        function subscribe(event) {
+            event.preventDefault();
+            alert('Thank you for subscribing!');
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelectorAll('nav a').forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
+        <h1>Foodie's Paradise</h1>
     </header>
     <nav>
         <a href="#home">Home</a>
@@ -125,31 +111,31 @@
     <div class="content">
         <main>
             <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Recipe 1">
+                <img src="https://placehold.co/150" alt="Recipe 1">
                 <h2>Recipe 1</h2>
                 <p>This is a short description of Recipe 1.</p>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Recipe 2">
+                <img src="https://placehold.co/150" alt="Recipe 2">
                 <h2>Recipe 2</h2>
                 <p>This is a short description of Recipe 2.</p>
             </div>
             <div class="card">
-                <img src="https://via.placeholder.com/150" alt="Recipe 3">
+                <img src="https://placehold.co/150" alt="Recipe 3">
                 <h2>Recipe 3</h2>
                 <p>This is a short description of Recipe 3.</p>
             </div>
         </main>
         <aside class="sidebar">
             <h2>Subscribe</h2>
-            <form>
+            <form onsubmit="subscribe(event)">
                 <input type="text" placeholder="Enter your email">
                 <input type="submit" value="Subscribe">
             </form>
         </aside>
     </div>
     <footer>
-        <p>&copy; 2023 My Website</p>
+        <p>Ainur Fatini &copy; 2023 Foodie Paradise</p>
     </footer>
 </body>
 </html>
